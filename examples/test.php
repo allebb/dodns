@@ -39,3 +39,6 @@ $new_record->getPort();
 $new_record->getWeight();
 
 //var_dump($new_record->toArray());
+
+$test = new \Ballen\Dodns\Handlers\ApiRequest(new \Ballen\Dodns\CredentialManager('fabcad1bb522f4b382be858d3f419c206e7b6e72248018bab5e71af8d448c593'));
+$test->all('domains');

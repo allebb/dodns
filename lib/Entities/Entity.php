@@ -1,5 +1,7 @@
 <?php namespace Ballen\Dodns\Entities;
 
+use \GuzzleHttp\Psr7\Response;
+
 abstract class Entity
 {
 
@@ -73,6 +75,12 @@ abstract class Entity
             default:
                 throw new \RuntimeException('The method "' . $name . '" does not exist in this class.');
         }
+    }
+
+    public function loadFromResponse(Response $response)
+    {
+        $data_object = json_decode($response->getBody());
+        var_dump($data_object);
     }
 
     /**
