@@ -1,8 +1,5 @@
 <?php
-require_once '../lib/Exceptions/EntityFieldException.php';
-require_once '../lib/Entities/Entity.php';
-require_once '../lib/Entities/DomainEntity.php';
-require_once '../lib/Entities/RecordEntity.php';
+require_once '../vendor/autoload.php';
 
 $domain = new Ballen\Dodns\Entities\DomainEntity(['name' => 'www', 'ip_address' => '172.24.65.3']);
 

@@ -1,6 +1,6 @@
 <?php namespace Ballen\Dodns\Entities;
 
-class RecordEntity extends Entity
+class RecordEntity extends Entity implements EntityInterface
 {
 
     protected $fields = [
@@ -17,5 +17,15 @@ class RecordEntity extends Entity
         if (!is_null($domain)) {
             $this->validateFieldDataMatch(array_keys($domain));
         }
+    }
+
+    public function id()
+    {
+        
+    }
+
+    public function requestBody()
+    {
+        
     }
 }
