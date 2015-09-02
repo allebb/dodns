@@ -5,6 +5,7 @@ use Ballen\Dodns\CredentialManager;
 use Ballen\Dodns\Entities\EntityInterface;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Request;
+use Ballen\Dodns\Entities\DomainEntity;
 
 class ApiRequest
 {
