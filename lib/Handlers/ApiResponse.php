@@ -35,7 +35,44 @@ class ApiResponse
     }
 
     /**
+     * Returns the HTTP status code of the error (or false if the HTTP status code is less than 399)
+     * @return boolean|int The HTTP status code returned from the API.
+     */
+    public function errorCode()
+    {
+        if ($this->isError()) {
+            return (int) $this->response->getStatusCode();
+        }
+        return false;
+    }
+
+    /**
+     * Returns the DigitalOcean API error ID eg. "forbidden" of the request (or false if the HTTP status code is less than 399)
+     * @return boolean|string 
+     */
+    public function errorStatus()
+    {
+        if ($this->isError()) {
+            return $this->toJson()->id;
+        }
+        return false;
+    }
+
+    /**
+     * Returns the DigitalOcean API error message eg. "You do not have access for the attempted action." of the request (or false if the HTTP status code is less than 399)
+     * @return boolean|string
+     */
+    public function errorMessage()
+    {
+        if ($this->isError()) {
+            return $this->toJson()->message;
+        }
+        return false;
+    }
+
+    /**
      * Return the response body as an assoicated array.
+     * @return array The response body as an array.
      */
     public function toArray()
     {
