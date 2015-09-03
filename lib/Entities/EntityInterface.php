@@ -9,8 +9,8 @@ interface EntityInterface
     public function id();
 
     // Outputs the request body that is used for the DigitalOcean API request.
-    public function requestBody();
-
-    // Create the entity from a DigitalOcean response.
-    public function loadFromArray($array);
+    public function createRequestBody();
+    
+    // Outputs the request body that is used for the DigitalOcean API request.
+    public function updateRequestBody();
 }

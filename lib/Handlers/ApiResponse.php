@@ -95,7 +95,8 @@ class ApiResponse
      */
     public function toEntity($section, $entity)
     {
-        return (new $entity())->loadFromArray($this->toArray()[$section]);
+        var_dump($this->toArray()[$section]);
+        return (new $entity($this->toArray()[$section]));
     }
 
     /**

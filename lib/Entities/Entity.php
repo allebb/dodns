@@ -1,7 +1,5 @@
 <?php namespace Ballen\Dodns\Entities;
 
-use \GuzzleHttp\Psr7\Response;
-
 abstract class Entity
 {
 
@@ -74,18 +72,6 @@ abstract class Entity
                 break;
             default:
                 throw new \RuntimeException('The method "' . $name . '" does not exist in this class.');
-        }
-    }
-
-    /**
-     * Creates the enity object from an array of data.
-     * @param array $response
-     */
-    public function loadFromArray(array $response)
-    {
-        $this->validateFieldDataMatch($response);
-        foreach ($response as $key => $value) {
-            $this->setEntityProperty($key, $value);
         }
     }
 
