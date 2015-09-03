@@ -12,5 +12,5 @@ interface EntityInterface
     public function requestBody();
 
     // Create the entity from a DigitalOcean response.
-    public function loadFromResponse(Response $response);
+    public function loadFromArray($array);
 }

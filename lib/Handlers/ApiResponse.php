@@ -95,18 +95,22 @@ class ApiResponse
      */
     public function toEntity($section, $entity)
     {
-        
+        return (new $entity())->loadFromArray($this->toArray()[$section]);
     }
 
     /**
      * Cast the response (when there is more than a single record) to a collection of entites
      * @param string $section The object key of which is to be extracted (contains the entite(s)). 
      * @param string $entity The entity class of which is used to cast the response to (eg. "\Ballen\Dodns\Entities\Domain::class")s
-     * @return Collection
+     * @return Collection The collection of entities.
      */
     public function toCollection($section, $entity)
     {
-        
+        $collection = new Collection();
+        foreach ($this->toArray()[$section] as $entitysection) {
+            $collection->push($this->toEntity($entitysection, $entity));
+        }
+        return $collection;
     }
 
     /**

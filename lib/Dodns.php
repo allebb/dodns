@@ -21,7 +21,7 @@ class Dodns
 
     public function domains()
     {
-        $this->api_handler->request('domains', self::GET);
+        var_dump($this->api_handler->request('domains', self::GET)->toEntity('domains', DomainEntity::class)->requestBody());
     }
 
     public function domain(DomainEntity $domain)

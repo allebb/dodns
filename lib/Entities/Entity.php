@@ -77,10 +77,16 @@ abstract class Entity
         }
     }
 
-    public function loadFromResponse(Response $response)
+    /**
+     * Creates the enity object from an array of data.
+     * @param array $response
+     */
+    public function loadFromArray(array $response)
     {
-        $data_object = json_decode($response->getBody());
-        var_dump($data_object);
+        $this->validateFieldDataMatch($response);
+        foreach ($response as $key => $value) {
+            $this->setEntityProperty($key, $value);
+        }
     }
 
     /**
