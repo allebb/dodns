@@ -5,8 +5,7 @@ use Ballen\Dodns\Dodns;
 use Ballen\Dodns\Entities\DomainEntity;
 
 // Set your DigitalOcean API key here!
-$digitalocean_api_v2_token = '';
-
+$digitalocean_api_v2_token = require_once 'token.php';
 
 $test = new Dodns(new CredentialManager($digitalocean_api_v2_token));
 
@@ -19,7 +18,7 @@ var_dump($test->domains());
  * Example of returning a single domain.
  */
 var_dump($test->domain(new DomainEntity([
-    'name' => 'alln.uk',
-    'ttl' => 3000,
-    'zone_file' => null
+        'name' => 'alln.uk',
+        'ttl' => 3000,
+        'zone_file' => null
 ])));
