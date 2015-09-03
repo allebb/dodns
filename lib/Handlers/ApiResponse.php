@@ -95,7 +95,6 @@ class ApiResponse
      */
     public function toEntity($section, $entity)
     {
-        var_dump($this->toArray()[$section]);
         return (new $entity($this->toArray()[$section]));
     }
 
@@ -107,11 +106,12 @@ class ApiResponse
      */
     public function toCollection($section, $entity)
     {
-        $collection = new Collection();
-        foreach ($this->toArray()[$section] as $entitysection) {
-            $collection->push($this->toEntity($entitysection, $entity));
+        $data = $this->toArray();
+        $collection_array = [];
+        foreach ($data[$section] as $entitysection) {
+            $collection_array[] = new $entity($entitysection);
         }
-        return $collection;
+        return new Collection($collection_array);
     }
 
     /**
