@@ -14,17 +14,23 @@ $test = new Dodns(new CredentialManager($digitalocean_api_v2_token));
  */
 var_dump($test->domains());
 
+$my_domain = new Domain([
+    'name' => 'alln.uk',
+    'ttl' => 3000,
+    'zone_file' => null
+    ]);
+
 /**
  * Example of returning a single domain.
  */
-var_dump($test->domain(new Domain([
-        'name' => 'alln.uk',
-        'ttl' => 3000,
-        'zone_file' => null
-])));
+var_dump($test->domain($my_domain));
 
-var_dump($test->records(new Domain([
-        'name' => 'alln.uk',
-        'ttl' => 3000,
-        'zone_file' => null
-], )));
+/**
+ * Example of returning all records for a specific domain.
+ */
+var_dump($test->records($my_domain));
+
+/**
+ * Example of returning a specific record.
+ */
+var_dump($test->record($my_domain, 7843574));

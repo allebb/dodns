@@ -19,6 +19,6 @@ class Domain extends Entity implements EntityInterface
 
     public function id()
     {
-        return $this->data['name'];
+        return $this->getName();
     }
 }

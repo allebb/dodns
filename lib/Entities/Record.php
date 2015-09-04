@@ -18,10 +18,11 @@ class Record extends Entity implements EntityInterface
         if (!is_null($domain)) {
             $this->validateFieldDataMatch(array_keys($domain));
         }
+        $this->data = $domain;
     }
 
     public function id()
     {
-        
+        return $this->getId();
     }
 }

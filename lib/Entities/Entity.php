@@ -83,4 +83,13 @@ abstract class Entity
     {
         return $this->data;
     }
+
+    /**
+     * Exports the entity data to JSON
+     * @return string
+     */
+    public function toJson()
+    {
+        return json_encode($this->toArray());
+    }
 }

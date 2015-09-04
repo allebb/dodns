@@ -1,8 +1,10 @@
 <?php namespace Ballen\Dodns;
 
-use Ballen\Dodns\Handlers\ApiRequest;
 use Ballen\Dodns\Entities\Domain;
 use Ballen\Dodns\Entities\Record;
+use Ballen\Dodns\Handlers\ApiRequest;
+use Ballen\Dodns\Support\DomainBuilder;
+use Ballen\Dodns\Support\RecordBuilder;
 
 class Dodns
 {
@@ -29,7 +31,7 @@ class Dodns
         return $this->api_handler->request('domains/' . $domain->id(), self::GET)->toEntity('domain', Domain::class);
     }
 
-    public function createDomain(Domain $domain)
+    public function createDomain(DomainBuilder $domain)
     {
         
     }
@@ -49,12 +51,12 @@ class Dodns
         return $this->api_handler->request('domains/' . $domain->id() . '/records', self::GET)->toCollection('domain_records', Record::class);
     }
 
-    public function record(Record $record)
+    public function record(Domain $domain, $record_id)
     {
-        
+        return $this->api_handler->request('domains/' . $domain->id() . '/records/' . $record_id, self::GET)->toEntity('domain_record', Record::class);
     }
 
-    public function createRecord(Record $record)
+    public function createRecord(RecordBuilder $record)
     {
         
     }
