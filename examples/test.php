@@ -2,7 +2,7 @@
 require_once '../vendor/autoload.php';
 use Ballen\Dodns\CredentialManager;
 use Ballen\Dodns\Dodns;
-use Ballen\Dodns\Entities\DomainEntity;
+use Ballen\Dodns\Entities\Domain;
 
 // Set your DigitalOcean API key here!
 $digitalocean_api_v2_token = require_once 'token.php';
@@ -17,7 +17,7 @@ var_dump($test->domains());
 /**
  * Example of returning a single domain.
  */
-var_dump($test->domain(new DomainEntity([
+var_dump($test->domain(new Domain([
         'name' => 'alln.uk',
         'ttl' => 3000,
         'zone_file' => null

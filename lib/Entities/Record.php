@@ -1,9 +1,10 @@
 <?php namespace Ballen\Dodns\Entities;
 
-class RecordEntity extends Entity implements EntityInterface
+class Record extends Entity implements EntityInterface
 {
 
     protected $fields = [
+        'id', // eg. 765222
         'type', // eg. "A"
         'name', // eg. "www"
         'data', // eg. "172.24.34.33"
@@ -20,11 +21,6 @@ class RecordEntity extends Entity implements EntityInterface
     }
 
     public function id()
-    {
-        
-    }
-
-    public function requestBody()
     {
         
     }

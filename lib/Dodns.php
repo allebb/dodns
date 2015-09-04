@@ -1,8 +1,8 @@
 <?php namespace Ballen\Dodns;
 
 use Ballen\Dodns\Handlers\ApiRequest;
-use Ballen\Dodns\Entities\DomainEntity;
-use Ballen\Dodns\Entities\RecordEntity;
+use Ballen\Dodns\Entities\Domain;
+use Ballen\Dodns\Entities\Record;
 
 class Dodns
 {
@@ -21,25 +21,25 @@ class Dodns
 
     public function domains()
     {
-        return $this->api_handler->request('domains', self::GET)->toCollection('domains', DomainEntity::class);
+        return $this->api_handler->request('domains', self::GET)->toCollection('domains', Domain::class);
     }
 
-    public function domain(DomainEntity $domain)
+    public function domain(Domain $domain)
     {
-        return $this->api_handler->request('domains/' . $domain->id(), self::GET)->toEntity('domain', DomainEntity::class);
+        return $this->api_handler->request('domains/' . $domain->id(), self::GET)->toEntity('domain', Domain::class);
     }
 
-    public function createDomain(DomainEntity $domain)
-    {
-        
-    }
-
-    public function updateDomain(DomainEntity $domain)
+    public function createDomain(Domain $domain)
     {
         
     }
 
-    public function deleteDomain(DomainEntity $domain)
+    public function updateDomain(Domain $domain)
+    {
+        
+    }
+
+    public function deleteDomain(Domain $domain)
     {
         
     }
@@ -49,22 +49,22 @@ class Dodns
         
     }
 
-    public function record(RecordEntity $record)
+    public function record(Record $record)
     {
         
     }
 
-    public function createRecord(RecordEntity $record)
+    public function createRecord(Record $record)
     {
         
     }
 
-    public function updateRecord(RecordEntity $record)
+    public function updateRecord(Record $record)
     {
         
     }
 
-    public function deleteRecord(RecordEntity $record)
+    public function deleteRecord(Record $record)
     {
         
     }
