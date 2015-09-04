@@ -1,8 +1,9 @@
 <?php namespace Ballen\Dodns\Handlers;
 
-use Ballen\Dodns\Handlers\ApiResponse;
 use Ballen\Dodns\CredentialManager;
-use Ballen\Dodns\Entities\EntityInterface;
+use Ballen\Dodns\Exceptions\ApiAuthException;
+use Ballen\Dodns\Handlers\ApiResponse;
+use GuzzleHttp\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Request;
 
@@ -16,7 +17,7 @@ class ApiRequest
 
     /**
      * The Guzzle HTTP client instance.
-     * @var GuzzleHttp\Client
+     * @var Client
      */
     private $http_client;
 
@@ -52,7 +53,12 @@ class ApiRequest
      */
     public function request($endpoint, $method = 'GET', $data = [])
     {
-        $request = new Request($method, ltrim($endpoint, '/'), $data);
-        return new ApiResponse($this->http_client->send($request));
+        try {
+            $request = new Request($method, ltrim($endpoint, '/'), $data);
+            $result = new ApiResponse($this->http_client->send($request));
+        } catch (\GuzzleHttp\Exception\ClientException $exception) {
+            throw new ApiAuthException('The web service reported the request was "unauthorised", please check the API key used.');
+        }
+        return $result;
     }
 }
