@@ -36,11 +36,19 @@ var_dump($test->records($my_domain));
 var_dump($test->record($my_domain, 7843574));
 
 
+
+$delete_domain_example = new Domain([
+    'name' => 'bobby-test.com',
+    'ttl' => 1800,
+    'zone_file' => null,
+    ]);
+
 /**
- * Example of deleting a domain.
+ * Example of deleting an entire domain.
  */
-//var_dump($test->deleteDomain(new Domain([
-//        'name' => 'ballen-test.com',
-//        'ttl' => 1800,
-//        'zone_file' => null,
-//])));
+//var_dump($test->deleteDomain($delete_domain_example)));
+
+/**
+ * Example of deleting a domain record.
+ */
+//var_dump($test->deleteRecord($delete_domain_example, 8537674));

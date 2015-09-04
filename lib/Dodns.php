@@ -57,6 +57,12 @@ class Dodns
         
     }
 
+    /**
+     * Delete an entire domain including all records.
+     * @param Domain $domain The domain of which the record belongs to.
+     * @return boolean
+     * @throws Exceptions\ApiActionException
+     */
     public function deleteDomain(Domain $domain)
     {
         if ($this->api_handler->request('domains/' . $domain->id(), self::DELETE)->guzzleInstance()->getStatusCode() != 204) {
@@ -96,8 +102,18 @@ class Dodns
         
     }
 
-    public function deleteRecord(Record $record)
+    /**
+     * Delete a specific record for a given domain.
+     * @param Domain $domain The domain of which the record belongs to.
+     * @param int $record_id The record ID of which to delete
+     * @return boolean
+     * @throws Exceptions\ApiActionException
+     */
+    public function deleteRecord(Domain $domain, $record_id)
     {
-        
+        if ($this->api_handler->request('domains/' . $domain->id() . '/records/' . $record_id, self::DELETE)->guzzleInstance()->getStatusCode() != 204) {
+            throw new Exceptions\ApiActionException('The domain record could not be deleted!');
+        }
+        return true;
     }
 }
