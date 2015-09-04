@@ -22,3 +22,9 @@ var_dump($test->domain(new Domain([
         'ttl' => 3000,
         'zone_file' => null
 ])));
+
+var_dump($test->records(new Domain([
+        'name' => 'alln.uk',
+        'ttl' => 3000,
+        'zone_file' => null
+], )));

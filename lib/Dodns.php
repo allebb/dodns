@@ -44,9 +44,9 @@ class Dodns
         
     }
 
-    public function records()
+    public function records(Domain $domain)
     {
-        
+        return $this->api_handler->request('domains/' . $domain->id() . '/records', self::GET)->toCollection('domain_records', Record::class);
     }
 
     public function record(Record $record)
