@@ -115,6 +115,15 @@ class ApiResponse
     }
 
     /**
+     * Return the Guzzle Repsonse object.
+     * @return Psr\Http\Message\ResponseInterface
+     */
+    public function guzzleInstance()
+    {
+        return $this->response;
+    }
+
+    /**
      * Check that a given class (entity) exists.
      * @param string $class The class name (and namespace).
      * @param type $class

@@ -12,7 +12,7 @@ $test = new Dodns(new CredentialManager($digitalocean_api_v2_token));
 /**
  * Example of getting and displaying all of your currently configured domains:
  */
-var_dump($test->domains());
+//var_dump($test->domains());
 
 $my_domain = new Domain([
     'name' => 'alln.uk',
@@ -34,3 +34,13 @@ var_dump($test->records($my_domain));
  * Example of returning a specific record.
  */
 var_dump($test->record($my_domain, 7843574));
+
+
+/**
+ * Example of deleting a domain.
+ */
+//var_dump($test->deleteDomain(new Domain([
+//        'name' => 'ballen-test.com',
+//        'ttl' => 1800,
+//        'zone_file' => null,
+//])));
