@@ -1,6 +1,9 @@
 <?php namespace Ballen\Dodns\Support;
 
-class DomainBuilder
+class DomainBuilder implements BuilderInterface
 {
-    
+    public function requestBody()
+    {
+        ;
+    }
 }
