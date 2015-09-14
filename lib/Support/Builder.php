@@ -1,17 +1,19 @@
 <?php namespace Ballen\Dodns\Support;
 
+use Ballen\Dodns\Handlers\ApiRequest;
+
 abstract class Builder
 {
 
-    // Sends the API request to DigitalOcean and returns boolean value (if it's a 204 response) otherwise we thrown an exception!
-    public function create()
+    private $request;
+
+    public function __construct()
     {
-        // Send the request to the API.
+        $this->request = new ApiRequest;
     }
 
-    // Saves changes to an existing record to DigitalOcean and returns boolean value (if its a 204 response) otherwise will thrown an exception.
-    public function update()
+    public function create()
     {
-        // Send the request to the API.
+        $response = $this->request->request($this->endpoint, 'POST', $this->requestBody());
     }
 }

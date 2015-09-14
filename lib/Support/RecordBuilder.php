@@ -6,6 +6,8 @@ class RecordBuilder extends Builder implements BuilderInterface
     const TYPE_STRING = 'string';
     const TYPE_NULLABLE = 'null';
     const TYPE_NUMBER = 'number';
+    
+    public $endpoint = 'records';
 
     private $object_data = [
         'type' => false,
@@ -69,37 +71,6 @@ class RecordBuilder extends Builder implements BuilderInterface
         ],
     ];
 
-    public function type($data)
-    {
-        $this->validateDataTypes($data, $type);
-        $this->object_data[$type] = $data;
-    }
-
-    public function name()
-    {
-        
-    }
-
-    public function data()
-    {
-        
-    }
-
-    public function priority()
-    {
-        
-    }
-
-    public function port()
-    {
-        
-    }
-
-    public function weight()
-    {
-        
-    }
-
     public function requestBody()
     {
         return json_encode($this->object_data);
@@ -107,11 +78,24 @@ class RecordBuilder extends Builder implements BuilderInterface
 
     private function validateRequired($data, $field)
     {
-        
+        // By checking against the 'type' we can check which fields are required for the other values...
     }
 
     private function validateDataType($data, $field)
     {
-        
+        // If the valid data types is an array we'll check that the data matches one of them in a string comparision.
+        if (is_array($field)) {
+            foreach ($field as $items) {
+                if ($data === $items) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        // If the data is not an array we'll check the data type.
+        if (gettype($data) == $field) {
+            return true;
+        }
+        return false;
     }
 }
