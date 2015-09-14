@@ -1,6 +1,6 @@
 <?php namespace Ballen\Dodns\Support;
 
-class RecordBuilder implements BuilderInterface
+class RecordBuilder extends Builder implements BuilderInterface
 {
 
     const TYPE_STRING = 'string';
@@ -102,7 +102,7 @@ class RecordBuilder implements BuilderInterface
 
     public function requestBody()
     {
-        
+        return json_encode($this->object_data);
     }
 
     private function validateRequired($data, $field)
