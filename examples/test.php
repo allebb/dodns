@@ -22,20 +22,21 @@ $my_domain = new Domain([
     'zone_file' => null
     ]);
 
+
 /**
  * Example of returning a single domain.
  */
-var_dump($test->domain($my_domain));
+//var_dump($test->domain($my_domain));
 
 /**
  * Example of returning all records for a specific domain.
  */
-var_dump($test->records($my_domain));
+//var_dump($test->records($my_domain));
 
 /**
  * Example of returning a specific record.
  */
-var_dump($test->record($my_domain, 7843574));
+//var_dump($test->record($my_domain, 7843574));
 
 
 
@@ -55,6 +56,6 @@ $delete_domain_example = new Domain([
  */
 //var_dump($test->deleteRecord($delete_domain_example, 8537674));
 
-$new_domain = $test->createDomain(new DomainBuilder('mytestdomain.uk', '127.0.0.1'));
+$new_domain = $test->createDomain(new DomainBuilder('mytestdodmain.uk', '127.0.0.1'));
 
 var_dump($new_domain);

@@ -4,12 +4,7 @@ interface BuilderInterface
 {
 
     /**
-     * The endpoint URL.
-     */
-    public function endpoint();
-
-    /**
-     * Outputs the API request body for the create method.
+     * Outputs the API request body for the domain/record creation (POST) request.
      */
     public function requestBody();
 }

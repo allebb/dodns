@@ -27,11 +27,6 @@ class DomainBuilder extends Builder implements BuilderInterface
         $this->object_data['ip_address'] = $ip_address;
     }
 
-    public function endpoint()
-    {
-        return 'domains';
-    }
-
     public function requestBody()
     {
         return json_encode($this->object_data);

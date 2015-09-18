@@ -51,19 +51,17 @@ class ApiRequest
      * @param array|string $data The HTTP request body
      * @return ApiResponse
      */
-    public function request($endpoint, $method = 'GET', $data = null)
+    public function request($endpoint, $method = 'GET', $data = false)
     {
 
-        if (is_null($data)) {
-            $data = [];
+        if (is_string($data)) {
+            $request = new Request($method, ltrim($endpoint, '/'), $this->http_client->getConfig()['headers'], $data);
+        } else {
+            $request = new Request($method, ltrim($endpoint, '/'));
         }
-        
+
         try {
-            if (is_string($data)) {
-                $request = new Request($method, ltrim($endpoint, '/'), ['body' => $data]);
-            } else {
-                $request = new Request($method, ltrim($endpoint, '/'), $data);
-            }
+            //die(var_dump($request));
             $result = new ApiResponse($this->http_client->send($request));
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
             throw new ApiAuthException('The web service reported an error: ' . $exception->getResponse()->getBody());
