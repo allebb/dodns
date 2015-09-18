@@ -4,7 +4,7 @@ require_once '../vendor/autoload.php';
 use Ballen\Dodns\CredentialManager;
 use Ballen\Dodns\Dodns;
 use Ballen\Dodns\Entities\Domain;
-use Ballen\Dodns\Support\DomainBuilder;
+use Ballen\Dodns\Support\RecordBuilder;
 
 // Set your DigitalOcean API key here!
 $digitalocean_api_v2_token = require_once 'token.php';
@@ -55,7 +55,23 @@ $delete_domain_example = new Domain([
  * Example of deleting a domain record.
  */
 //var_dump($test->deleteRecord($delete_domain_example, 8537674));
+//$new_domain = $test->createDomain(new DomainBuilder('mytestdodmain.uk', '127.0.0.1'));
 
-$new_domain = $test->createDomain(new DomainBuilder('mytestdodmain.uk', '127.0.0.1'));
+$example_update_domain = new Domain([
+    'name' => 'mytestdodmain.uk',
+    'ttl' => 3600,
+    'zone_file' => null,
+    ]);
 
-var_dump($new_domain);
+$the_new_record = new RecordBuilder('A', '@', '127.0.0.1');
+
+//$create_record = $test->createRecord($example_update_domain, $the_new_record);
+
+
+// Lets get a record object from the API
+$update_example = $test->record($example_update_domain, 8912064);
+// Change the IP address of the current record object
+$update_example->setData('172.3.33.10');
+// ...finally Save these changes to the API.
+$update_record = $test->updateRecord($example_update_domain, $update_example);
+var_dump($update_record);

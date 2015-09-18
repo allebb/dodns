@@ -47,14 +47,14 @@ class Dodns
         return $this->api_handler->request('domains/' . $domain->id(), self::GET)->toEntity('domain', Domain::class);
     }
 
+    /**
+     * Creates a new domain record.
+     * @param DomainBuilder $domain
+     * @return Ballen\Dodns\Entities\Domain
+     */
     public function createDomain(DomainBuilder $domain)
     {
         return $this->api_handler->request('domains', self::POST, $domain->requestBody())->toEntity('domain', Domain::class);
-    }
-
-    public function updateDomain(Domain $domain)
-    {
-        //
     }
 
     /**
@@ -92,14 +92,26 @@ class Dodns
         return $this->api_handler->request('domains/' . $domain->id() . '/records/' . $record_id, self::GET)->toEntity('domain_record', Record::class);
     }
 
-    public function createRecord(RecordBuilder $record)
+    /**
+     * Create a new record for a specific domain.
+     * @param Domain $domain The domain of which the record will belong to.
+     * @param RecordBuilder $record The record object of which to create the domain recrod with.
+     * @return  Ballen\Dodns\Entities\Record
+     */
+    public function createRecord(Domain $domain, RecordBuilder $record)
     {
-        
+        return $this->api_handler->request('domains/' . $domain->id() . '/records', self::POST, $record->requestBody())->toEntity('domain_record', Record::class);
     }
 
-    public function updateRecord(Record $record)
+    /**
+     * Update an existing record
+     * @param Domain $domain The domain of which the record will belong to.
+     * @param RecordBuilder $record The record object of which to create the domain recrod with.
+     * @return  Ballen\Dodns\Entities\Record
+     */
+    public function updateRecord(Domain $domain, Record $record)
     {
-        
+        return $this->api_handler->request('domains/' . $domain->id() . '/records/' . (string) $record->id(), self::PUT, $record->toJson())->toEntity('domain_record', Record::class);
     }
 
     /**
