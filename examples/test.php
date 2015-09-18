@@ -52,3 +52,5 @@ $delete_domain_example = new Domain([
  * Example of deleting a domain record.
  */
 //var_dump($test->deleteRecord($delete_domain_example, 8537674));
+
+$create_domain = new Ballen\Dodns\Support\DomainBuilder('mytestdomain.uk', '127.0.0.1');
