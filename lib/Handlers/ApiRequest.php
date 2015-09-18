@@ -1,7 +1,7 @@
 <?php namespace Ballen\Dodns\Handlers;
 
 use Ballen\Dodns\CredentialManager;
-use Ballen\Dodns\Exceptions\ApiAuthException;
+use Ballen\Dodns\Exceptions\ApiErrorException;
 use Ballen\Dodns\Handlers\ApiResponse;
 use GuzzleHttp\Client;
 use GuzzleHttp\Client as GuzzleClient;
@@ -64,7 +64,16 @@ class ApiRequest
             //die(var_dump($request));
             $result = new ApiResponse($this->http_client->send($request));
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
-            throw new ApiAuthException('The web service reported an error: ' . $exception->getResponse()->getBody());
+            $status = null;
+            $message = null;
+            $object = null;
+            if ($exception->getResponse()) {
+                $response = $exception->getResponse();
+                $status = json_decode($response->getBody()->getContents())->id;
+                $message = json_decode($response->getBody()->getContents())->message;
+                $object = $response;
+            }
+            throw new ApiErrorException('An API request error occured: ' . $exception->getResponse()->getBody(), $exception->getResponse()->getStatusCode(), $status, $message, $object);
         }
         return $result;
     }
