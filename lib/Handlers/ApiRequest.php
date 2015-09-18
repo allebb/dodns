@@ -48,16 +48,25 @@ class ApiRequest
      * Sends the DigitalOcean API request to the API and returns an API response object.
      * @param string $endpoint The API endpoint address
      * @param string $method The HTTP method used eg. GET, POST, DELETE etc.
-     * @param mixed $data The HTTP request body
+     * @param array|string $data The HTTP request body
      * @return ApiResponse
      */
-    public function request($endpoint, $method = 'GET', $data = [])
+    public function request($endpoint, $method = 'GET', $data = null)
     {
+
+        if (is_null($data)) {
+            $data = [];
+        }
+        
         try {
-            $request = new Request($method, ltrim($endpoint, '/'), $data);
+            if (is_string($data)) {
+                $request = new Request($method, ltrim($endpoint, '/'), ['body' => $data]);
+            } else {
+                $request = new Request($method, ltrim($endpoint, '/'), $data);
+            }
             $result = new ApiResponse($this->http_client->send($request));
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
-            throw new ApiAuthException('The web service reported the request was "unauthorised", please check the API key used.');
+            throw new ApiAuthException('The web service reported an error: ' . $exception->getResponse()->getBody());
         }
         return $result;
     }

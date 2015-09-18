@@ -49,12 +49,12 @@ class Dodns
 
     public function createDomain(DomainBuilder $domain)
     {
-        
+        return $this->api_handler->request('domains', self::POST, $domain->requestBody())->toEntity('domain', Domain::class);
     }
 
     public function updateDomain(Domain $domain)
     {
-        
+        //
     }
 
     /**

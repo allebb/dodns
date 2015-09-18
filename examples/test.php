@@ -1,8 +1,10 @@
 <?php
 require_once '../vendor/autoload.php';
+
 use Ballen\Dodns\CredentialManager;
 use Ballen\Dodns\Dodns;
 use Ballen\Dodns\Entities\Domain;
+use Ballen\Dodns\Support\DomainBuilder;
 
 // Set your DigitalOcean API key here!
 $digitalocean_api_v2_token = require_once 'token.php';
@@ -53,4 +55,6 @@ $delete_domain_example = new Domain([
  */
 //var_dump($test->deleteRecord($delete_domain_example, 8537674));
 
-$create_domain = new Ballen\Dodns\Support\DomainBuilder('mytestdomain.uk', '127.0.0.1');
+$new_domain = $test->createDomain(new DomainBuilder('mytestdomain.uk', '127.0.0.1'));
+
+var_dump($new_domain);

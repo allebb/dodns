@@ -10,11 +10,9 @@ class DomainBuilder extends Builder implements BuilderInterface
         'name' => false,
         'ip_address' => false,
     ];
-    public $endpoint = 'domains';
 
     public function __construct($name, $ip_address = '127.0.0.1')
     {
-        parent::__construct();
         $this->object_data['name'] = $name;
         $this->object_data['ip_address'] = $ip_address;
     }
@@ -27,6 +25,11 @@ class DomainBuilder extends Builder implements BuilderInterface
     public function setIpAddress($ip_address)
     {
         $this->object_data['ip_address'] = $ip_address;
+    }
+
+    public function endpoint()
+    {
+        return 'domains';
     }
 
     public function requestBody()
