@@ -12,6 +12,25 @@
  * @link https://github.com/bobsta63/dodns
  * @link http://www.bobbyallen.me
  */
+
+/**
+ * Magic method documentation (inheritated from the Entity class)
+ * @method $this getId() Get the record ID.
+ * @method $this setId($value) Set or update the record ID.
+ * @method $this getType() Get the record type value ()
+ * @method $this setType($value) Set or update the record type value ()
+ * @method $this getName() Get the record name (eg. )
+ * @method $this setName($value) Set or update the record name value (eg. )
+ * @method $this getData() Get the record data value (eg. 172.24.54.22 or 'cname.example.com')
+ * @method $this setData($value) Set or update the record type value (eg. '172.24.3.22' or '@')
+ * @method $this getPriority() Get the record priority value (eg. 10)
+ * @method $this setPriority(int $value) Set or update the record priority value (eg. 10)
+ * @method $this getPort() Get the record port value (eg.80)
+ * @method $this setPort(int $value) Set or update the record port value (eg. 80)
+ * @method $this getWeight() Get the record weight value (eg. 100)
+ * @method $this setWeight(int $value) Set or update the record weight value (eg. 100)
+ * 
+ */
 class Record extends Entity implements EntityInterface
 {
 

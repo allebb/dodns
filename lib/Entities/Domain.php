@@ -13,6 +13,15 @@
  * @link http://www.bobbyallen.me
  *
  */
+
+/**
+ * Magic method documentation (inheritated from the Entity class)
+ * @method $this getName() Get the domain name
+ * @method $this setName($value) Set or update the domain name.
+ * @method $this getTtl() Get the domain name
+ * @method $this setTtl(int $value) Set or update the domains TTL value.
+ * @method $this getZone_file() Get the zone file content.
+ */
 class Domain extends Entity implements EntityInterface
 {
 
