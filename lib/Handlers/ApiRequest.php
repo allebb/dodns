@@ -70,16 +70,13 @@ class ApiRequest
         try {
             $result = new ApiResponse($this->http_client->send($request));
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
-            $status = null;
-            $message = null;
-            $object = null;
             if ($exception->getResponse()) {
                 $response = $exception->getResponse();
                 $status = json_decode($response->getBody())->id;
                 $message = json_decode($response->getBody())->message;
                 $object = $response;
             }
-            if (is_null($message)) {
+            if (!isset($message)) {
                 throw new ApiErrorException($message->getBody(), $exception->getResponse()->getStatusCode());
             }
             throw new ApiErrorException($message, $exception->getResponse()->getStatusCode(), $status, $message, $object);
