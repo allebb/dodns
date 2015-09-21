@@ -36,7 +36,7 @@ class CredentialManager
     /**
      * Gets (or Sets) the DigitialOcean API key.
      * @param null|string $token To set the API token, specify it otherwise if none is specified it will output your currently set token.
-     * @return type
+     * @return mixed
      */
     public function token($token = false)
     {

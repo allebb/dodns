@@ -17,7 +17,8 @@ interface BuilderInterface
 {
 
     /**
-     * Outputs the API request body for the domain/record creation (POST) request.
+     * Outputs the API request body for the domain/record API operations 
+     * for example the PUT and POST HTTP requests.
      */
     public function requestBody();
 }

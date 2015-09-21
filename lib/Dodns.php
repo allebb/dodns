@@ -52,7 +52,7 @@ class Dodns
 
     /**
      * Return a specific domain object configured in DigitalOcean DNS.
-     * @param
+     * @param Domain $domain The domain oject to return from the aPI.
      * @return Ballen\Dodns\Entities\Domain
      */
     public function domain(Domain $domain)
@@ -62,7 +62,7 @@ class Dodns
 
     /**
      * Creates a new domain record.
-     * @param DomainBuilder $domain
+     * @param DomainBuilder $domain The domain configuration to create.
      * @return Ballen\Dodns\Entities\Domain
      */
     public function createDomain(DomainBuilder $domain)

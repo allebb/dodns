@@ -35,12 +35,6 @@ class ApiRequest
     private $http_client;
 
     /**
-     * The entity class the response should be cast to.
-     * @var string 
-     */
-    private $entity;
-
-    /**
      * Create a new instance of the DigitalOcean API request handler
      * @param CredentialManager $credentials The API user credentials
      * @param string $entity The entity class that the response should be cast to (eg. "\Ballen\Dodns\Entities\DomainEntity::class")
@@ -74,7 +68,6 @@ class ApiRequest
         }
 
         try {
-            //die(var_dump($request));
             $result = new ApiResponse($this->http_client->send($request));
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
             $status = null;

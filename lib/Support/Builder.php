@@ -1,7 +1,5 @@
 <?php namespace Ballen\Dodns\Support;
 
-use Ballen\Dodns\Handlers\ApiRequest;
-
 /**
  * DODNS
  *
@@ -18,6 +16,10 @@ use Ballen\Dodns\Handlers\ApiRequest;
 abstract class Builder
 {
 
+    /**
+     * Returns the request body content (the JSON payload) for the API request.
+     * @return string
+     */
     public function create()
     {
         return $this->requestBody();

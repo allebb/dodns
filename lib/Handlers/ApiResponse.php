@@ -21,7 +21,7 @@ class ApiResponse
 {
 
     /**
-     *  The response object
+     * The response object
      * @var Psr\Http\Message\ResponseInterface
      */
     private $response;
