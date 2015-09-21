@@ -79,7 +79,10 @@ class ApiRequest
                 $message = json_decode($response->getBody())->message;
                 $object = $response;
             }
-            throw new ApiErrorException('An API request error occured: ' . $exception->getResponse()->getBody(), $exception->getResponse()->getStatusCode(), $status, $message, $object);
+            if (is_null($message)) {
+                throw new ApiErrorException($message->getBody(), $exception->getResponse()->getStatusCode());
+            }
+            throw new ApiErrorException($message, $exception->getResponse()->getStatusCode(), $status, $message, $object);
         }
         return $result;
     }
