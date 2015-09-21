@@ -43,7 +43,7 @@ class Dodns
 
     /**
      * Return a colleciton of all domains that are configured in DigitalOcean DNS.
-     * @return Ballen\Collection\Collection
+     * @return \Ballen\Collection\Collection
      */
     public function domains()
     {
@@ -53,7 +53,7 @@ class Dodns
     /**
      * Return a specific domain object configured in DigitalOcean DNS.
      * @param Domain $domain The domain oject to return from the aPI.
-     * @return Ballen\Dodns\Entities\Domain
+     * @return \Ballen\Dodns\Entities\Domain
      */
     public function domain(Domain $domain)
     {
@@ -63,7 +63,7 @@ class Dodns
     /**
      * Creates a new domain record.
      * @param DomainBuilder $domain The domain configuration to create.
-     * @return Ballen\Dodns\Entities\Domain
+     * @return \Ballen\Dodns\Entities\Domain
      */
     public function createDomain(DomainBuilder $domain)
     {
@@ -87,7 +87,7 @@ class Dodns
     /**
      * Return a colleciton of all domain records for a given domain.
      * @param Domain $domain The domain of which to get all records for.
-     * @return Ballen\Collection\Collection
+     * @return \Ballen\Collection\Collection
      */
     public function records(Domain $domain)
     {
@@ -98,7 +98,7 @@ class Dodns
      * Return a specific record object from a specific domain.
      * @param Domain $domain The domain of which the record belongs to.
      * @param int $record_id The record ID of which to return.
-     * @return  Ballen\Dodns\Entities\Record
+     * @return  \Ballen\Dodns\Entities\Record
      */
     public function record(Domain $domain, $record_id)
     {
@@ -109,7 +109,7 @@ class Dodns
      * Create a new record for a specific domain.
      * @param Domain $domain The domain of which the record will belong to.
      * @param RecordBuilder $record The record object of which to create the domain recrod with.
-     * @return  Ballen\Dodns\Entities\Record
+     * @return  \Ballen\Dodns\Entities\Record
      */
     public function createRecord(Domain $domain, RecordBuilder $record)
     {
@@ -120,7 +120,7 @@ class Dodns
      * Update an existing record
      * @param Domain $domain The domain of which the record will belong to.
      * @param RecordBuilder $record The record object of which to create the domain recrod with.
-     * @return  Ballen\Dodns\Entities\Record
+     * @return  \Ballen\Dodns\Entities\Record
      */
     public function updateRecord(Domain $domain, Record $record)
     {

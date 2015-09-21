@@ -29,8 +29,8 @@ $response = $dns->records($domain);
 echo sprintf("There are <strong>%d</strong> domain records for the <strong>%s</strong> domain", $response->count(), $domain->getName());
 
 echo "<table>" . PHP_EOL;
-echo "<tr><th>Record</th><th>Type</th><th>Data</th><th>Priority</th><th>Port</th><th>Weight</th></tr>";
+echo "<tr><th>Record ID</th><th>Record</th><th>Type</th><th>Data</th><th>Priority</th><th>Port</th><th>Weight</th></tr>";
 foreach ($response->all()->toObject() as $record) {
-    echo sprintf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $record->getName(), $record->getType(), $record->getData(), $record->getPriority(), $record->getPort(), $record->getWeight());
+    echo sprintf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $record->id(), $record->getName(), $record->getType(), $record->getData(), $record->getPriority(), $record->getPort(), $record->getWeight());
 }
 echo "</table>" . PHP_EOL;
