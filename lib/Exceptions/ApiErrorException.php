@@ -16,10 +16,29 @@
 class ApiErrorException extends \Exception
 {
 
+    /**
+     * The HTTP status code as returned by Guzzle.
+     * @var int
+     */
     private $status_code = 200;
+    
+    /**
+     * The API status_id field response from the DigitalOcean API.
+     * @var string
+     */
     private $status_id = '';
+    
+    /**
+     * The API status_message field response from the DigitalOcean API.
+     * @var string
+     */
     private $status_message = '';
-    private $curl_response;
+    
+    /**
+     * The Guzzle response object
+     * @var type 
+     */
+    private $guzzle_response;
 
     /**
      * Initates a new API Error Exception object (custom Exception for DigitalOcean API calls.)
@@ -40,23 +59,39 @@ class ApiErrorException extends \Exception
         parent::__construct($message, $code, $previous);
     }
 
+    /**
+     * Get the HTTP status code (eg. 200)
+     * @return type
+     */
     public function apiStatusCode()
     {
         return $this->status;
     }
 
+    /**
+     * Get the API status ID from the DigitalOcean response (eg. "not_authorised")
+     * @return type
+     */
     public function apiStatusId()
     {
         return $this->status;
     }
 
+    /**
+     * Get the API response mesage from the DigtialOcean response (eg. "That domain does not exist")
+     * @return type
+     */
     public function apiResponseMessage()
     {
         return $this->api_response_message;
     }
 
+    /**
+     * The Guzzle response object
+     * @return type
+     */
     public function responseObject()
     {
-        return $this->curl_response;
+        return $this->guzzle_response;
     }
 }
