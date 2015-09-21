@@ -38,7 +38,7 @@ $record = $dns->record($domain, $record_id);
 $new_ip_address = '127.0.0.1';
 
 // Access the entity properties using the 'getX' methods...
-echo "The current record IP address is set to {$record->getData()}, we'll now update this to be {$new_ip_address}";
+echo "The current record IP address is set to {$record->getData()}, we'll now update this to be {$new_ip_address}<br>";
 
 // You can then make changes and save them back to DigitalOcean like so:
 $record->setData($new_ip_address); // Update the IP address of the example 'A' record
